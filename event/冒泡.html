@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Title</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="../3rd/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#div1").mousedown(function(event){
+				//event.stopPropagation();
+				return false;
+			});
+			$("#div2").mousedown(function(event){
+				alert("trigger mousedown event of rootDiv");
+			});
+		});
+	</script>
+</head>
+<body>
+<div id="rootDiv" style="position:relative;left:400px;top:200px;">
+	<div>1.单击输入框，使输入框获取焦点：</div>
+	<input id="input1" style="width:250px" type="text">
+	<div id="div2">
+		<div id="div1" style="width:200px;height:200px;background-color:red;"><br><br>2.然后再单击这里</div>
+	</div>
+</div>
+</body>
+</html>
+
+/*
+	关于 jQuery 来阻止冒泡排序的方式
+
+	方式一：event.stopPropagation();
+	$("#div1").mousedown(function(event){
+		event.stopPropagation();
+	});
+
+	方式二：return false;
+	$("#div1").mousedown(function(event){
+		return false;
+	});
+*/
